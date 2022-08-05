@@ -5,5 +5,5 @@
     - community.general
   tasks:
     - name: Include wordpress role
-      include_role:
+      ansible.builtin.include_role:
         name: wordpress

@@ -2,11 +2,11 @@
 dependency:
   name: galaxy
   options:
-    ignore-certs: True
-    ignore-errors: True
+    ignore-certs: true
+    ignore-errors: true
     role-file: requirements.yml
     requirements-file: collections.yml
-#driver:
+# driver:
 #  name: docker
 platforms:
   - name: wordpress

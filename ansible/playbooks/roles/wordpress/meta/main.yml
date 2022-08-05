@@ -1,6 +1,6 @@
 galaxy_info:
   author: Guillaume Vincent
-  role_name: guivin.wordpress_docker
+  role_name: guivin_wordpress_docker
   description: Install and configure Wordpress with Apache
 
   # If the issue tracker for your role is not on github, uncomment the
@@ -14,9 +14,9 @@ galaxy_info:
   # - GPL-3.0-only
   # - Apache-2.0
   # - CC-BY-4.0
-  license: license (GPL-2.0-or-later, MIT, etc)
+  license: Apache-2.0
 
-  min_ansible_version: 2.9
+  min_ansible_version: "2.9"
 
   # If this a Container Enabled role, provide the minimum Ansible Container version.
   # min_ansible_container_version:
@@ -45,7 +45,12 @@ galaxy_info:
     # remove the '[]' above, if you add tags to this list.
     #
     # NOTE: A tag is limited to a single word comprised of alphanumeric characters.
-    #       Maximum 20 tags per role.
+
+  platforms:
+   #       Maximum 20 tags per role.
+    - name: Ubuntu
+      versions:
+        - all
 
 dependencies: []
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,

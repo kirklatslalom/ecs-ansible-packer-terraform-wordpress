@@ -1,40 +1,40 @@
 ---
 # tasks file for wordpress
 - name: Wordpress | Enable apache mod expires
-  command: a2enmod rewrite expires
+  ansible.builtin.command: a2enmod rewrite expires
   changed_when: "'molecule-idempotence-notest' not in ansible_skip_tags"
 
 - name: Wordpress | Install prerequisites packages
-  apt:
+  ansible.builtin.apt:
     name: ["aptitude", "wget", "libpng-dev", "libjpeg-dev", "libjpeg62-turbo-dev", "libfreetype6-dev",
            "gnupg", "mariadb-client"]
-    update_cache: yes
+    update_cache: true
     state: present
-    force_apt_get: yes
+    force_apt_get: true
   tags: package
 
 - name: Wordpress | Find all files in apt cache
-  find:
+  ansible.builtin.find:
     paths: /var/lib/apt/lists
-    recurse: yes
+    recurse: true
   register: files_to_delete
 
 - name: Wordpress | Clean apt cache
-  file:
+  ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
   with_items: "{{ files_to_delete.files }}"
 
 - name: Wordpress | Add jpeg and freetype support
-  command: docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+  ansible.builtin.command: docker-php-ext-configure gd --with-freetype --with-jpeg
   changed_when: "'molecule-idempotence-notest' not in ansible_skip_tags"
 
 - name: Wordpress | Add MySQL support
-  command: docker-php-ext-install gd mysqli
+  ansible.builtin.command: docker-php-ext-install gd mysqli
   changed_when: "'molecule-idempotence-notest' not in ansible_skip_tags"
 
 - name: Wordpress | Configure php.ini
-  template:
+  ansible.builtin.template:
     src: php.ini.j2
     dest: /usr/local/etc/php/php.ini
     owner: "{{ apache_user }}"
@@ -42,13 +42,13 @@
     mode: 0644
 
 - name: Wordpress | Download wp-cli
-  get_url:
+  ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
     dest: /usr/local/bin/wp
     mode: 0750
 
 - name: Wordpress | Configure entrypoint
-  copy:
+  ansible.builtin.copy:
     src: files/entrypoint.sh
     dest: /opt/entrypoint.sh
     mode: 0750

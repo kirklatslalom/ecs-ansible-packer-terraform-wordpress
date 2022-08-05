@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """PyTest Fixtures."""
 from __future__ import absolute_import
 
