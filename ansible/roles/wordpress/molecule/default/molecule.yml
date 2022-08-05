@@ -6,8 +6,8 @@ dependency:
     ignore-errors: True
     role-file: requirements.yml
     requirements-file: collections.yml
-driver:
-  name: docker
+#driver:
+#  name: docker
 platforms:
   - name: wordpress
     image: php:7.2-apache

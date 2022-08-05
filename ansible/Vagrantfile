@@ -1,7 +1,7 @@
 VAGRANT_API_VERSION = 2
 
 Vagrant.configure(VAGRANT_API_VERSION) do |config|
-	config.vm.box = "ubuntu/xenial64"
+	config.vm.box = "ubuntu/jammy64"
 
 	config.vm.provider "virtualbox" do |vb|
 		vb.memory = 1024
