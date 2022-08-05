@@ -7,7 +7,7 @@ wordpress:
     - db:mysql
   dns: 8.8.8.8
   environment:
-    WP_VERSION: 5.4.2
+    WP_VERSION: 6.0.1
     TZ: Europe/Paris
 db:
   image: mysql:5.7

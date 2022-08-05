@@ -5,7 +5,7 @@
 	"ansible_playbook_dir": "./ansible",
 	"ansible_playbook_file": "./ansible/playbooks/wordpress.yml",
 	"ansible_version": "2.9",
-	"docker_base_image": "php:7.2-apache",
+	"docker_base_image": "php:7.4-apache",
 	"docker_repository": "{{env `DOCKER_REPOSITORY`}}",
 	"docker_image_version": "{{env `IMAGE_VERSION`}}"
   },

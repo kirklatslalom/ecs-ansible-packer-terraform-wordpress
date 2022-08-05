@@ -10,7 +10,7 @@ dependency:
 #  name: docker
 platforms:
   - name: wordpress
-    image: php:7.2-apache
+    image: php:7.4-apache
     dockerfile: ../common/Dockerfile.j2
     privileged: true
 test_sequence:
