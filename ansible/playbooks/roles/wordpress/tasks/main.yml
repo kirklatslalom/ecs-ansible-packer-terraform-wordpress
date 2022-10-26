@@ -1,7 +1,7 @@
 ---
 # tasks file for wordpress
 - name: Wordpress | Enable apache mod expires
-  ansible.builtin.command: a2enmod rewrite expires
+  command: a2enmod rewrite expires
   changed_when: "'molecule-idempotence-notest' not in ansible_skip_tags"
 
 - name: Wordpress | Install prerequisites packages
@@ -26,11 +26,11 @@
   with_items: "{{ files_to_delete.files }}"
 
 - name: Wordpress | Add jpeg and freetype support
-  ansible.builtin.command: docker-php-ext-configure gd --with-freetype --with-jpeg
+  command: docker-php-ext-configure gd --with-freetype --with-jpeg
   changed_when: "'molecule-idempotence-notest' not in ansible_skip_tags"
 
 - name: Wordpress | Add MySQL support
-  ansible.builtin.command: docker-php-ext-install gd mysqli
+  command: docker-php-ext-install gd mysqli libvips
   changed_when: "'molecule-idempotence-notest' not in ansible_skip_tags"
 
 - name: Wordpress | Configure php.ini
